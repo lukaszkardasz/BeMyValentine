@@ -53,7 +53,6 @@ function moveAndShrink(button){
     button.addEventListener('mouseenter', evasive);
   }
 }
-}
 
 function evasive(e){
   const b = e.currentTarget;
