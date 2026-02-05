@@ -14,18 +14,32 @@ function flashQuestion(){
 
 function moveAndShrink(button){
   noCount++;
-  // shrink factor
   const factor = Math.pow(0.6, noCount);
   const newW = Math.max(1, Math.round(baseWidth * factor));
   const newH = Math.max(1, Math.round(baseHeight * factor));
+
+  // adjust size, padding and font so label stays centered
   button.style.width = newW + 'px';
   button.style.height = newH + 'px';
+  if(factor < 1){
+    button.style.padding = '0 6px';
+    const fontSize = Math.max(8, Math.floor(newH * 0.45));
+    button.style.fontSize = fontSize + 'px';
+    button.style.lineHeight = newH + 'px';
+  } else {
+    button.style.padding = '';
+    button.style.fontSize = '';
+    button.style.lineHeight = '';
+  }
+  button.style.whiteSpace = 'nowrap';
+  button.style.display = 'inline-flex';
+  button.style.alignItems = 'center';
+  button.style.justifyContent = 'center';
 
   // position randomly within viewport while keeping button visible
   const pad = 12;
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-  const btnRect = button.getBoundingClientRect();
   const areaW = Math.max(0, vw - newW - pad*2);
   const areaH = Math.max(0, vh - newH - pad*2);
   const x = Math.floor(Math.random() * areaW) + pad;
@@ -35,11 +49,10 @@ function moveAndShrink(button){
   button.style.left = x + 'px';
   button.style.top = y + 'px';
 
-  // if it's tiny, reduce pointer precision
   if(newW <= 4 || newH <= 4){
-    // keep trying to evade by immediate tiny jumps when hovered
     button.addEventListener('mouseenter', evasive);
   }
+}
 }
 
 function evasive(e){
