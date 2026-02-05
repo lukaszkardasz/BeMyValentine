@@ -1,0 +1,25 @@
+:root{--bg:#fff0f5;--card:#fff;--accent:#e74c3c;--green:#2ecc71}
+*{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+html,body{height:100%;margin:0}
+body{
+  background: radial-gradient(circle at 20% 20%, #ffe6f0 0%, transparent 20%), radial-gradient(circle at 80% 80%, #fff0f0 0%, transparent 20%), #ffdfea;
+  display:flex;align-items:center;justify-content:center;padding:20px
+}
+.wrap{width:100%;max-width:760px}
+.card{background:rgba(255,255,255,0.85);padding:36px;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,0.12);text-align:center;position:relative}
+h1{margin:0 0 18px 0;font-size:1.8rem;color:#333}
+.buttons{display:inline-flex;gap:18px;align-items:center;position:relative}
+.btn{cursor:pointer;border:0;padding:14px 20px;border-radius:12px;font-size:1rem;transition:transform 220ms ease, width 220ms ease, height 220ms ease}
+.btn:focus{outline:3px solid rgba(0,0,0,0.08)}
+.yes{background:var(--green);color:#fff}
+.no{background:var(--accent);color:#fff;position:relative;width:120px;height:48px}
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45)}
+.overlay.hidden{display:none}
+.dialog{background:#fff;padding:28px 36px;border-radius:12px;text-align:center}
+
+/* flash animation for question */
+.flash{animation:flash 400ms ease}
+@keyframes flash{0%{transform:scale(0.98)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+/* small responsive tweaks */
+@media(max-width:480px){.btn{padding:10px 14px}.no{width:100px;height:44px}}
