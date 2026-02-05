@@ -44,7 +44,6 @@ function moveAndShrink(button){
   const areaH = Math.max(0, vh - newH - pad*2);
   const x = Math.floor(Math.random() * areaW) + pad;
   const y = Math.floor(Math.random() * areaH) + pad;
-  // use fixed position so we can move freely
   button.style.position = 'fixed';
   button.style.left = x + 'px';
   button.style.top = y + 'px';
@@ -71,7 +70,6 @@ noBtn.addEventListener('click', (e)=>{
 
 yesBtn.addEventListener('click', ()=>{
   success.classList.remove('hidden');
-  // simple confetti hearts
   for(let i=0;i<20;i++){
     const el = document.createElement('div');
     el.textContent = '💖';
@@ -81,7 +79,7 @@ yesBtn.addEventListener('click', ()=>{
     el.style.fontSize = (12+Math.random()*28)+'px';
     el.style.opacity = String(0.7+Math.random()*0.3);
     el.style.pointerEvents = 'none';
-    el.style.transform = `translateY(0)`;
+    el.style.transform = 'translateY(0)';
     el.style.transition = `transform ${1.6+Math.random()*1.2}s linear, opacity 2s`;
     document.body.appendChild(el);
     requestAnimationFrame(()=>{
